@@ -44,15 +44,19 @@ app.get('/:word/echo', (req, res) => {
   res.json({ echo: word });
 });
 
-// Ruta /name que recibe query parameters
-app.post('/name', (req, res) => {
-  // req.query contiene los parámetros de la URL
-  const firstName = req.query.first;
-  const lastName = req.query.last;
-
-  // Respondemos con JSON
-  res.json({ name: `${firstName} ${lastName}` });
-});
+app.route('/name')
+  // GET: obtiene datos por query string
+  .get((req, res) => {
+    const firstName = req.query.first;
+    const lastName = req.query.last;
+    res.json({ name: `${firstName} ${lastName}` });
+  })
+  // POST: obtiene datos del body del formulario
+  .post((req, res) => {
+    const firstName = req.body.first;
+    const lastName = req.body.last;
+    res.json({ name: `${firstName} ${lastName}` });
+  });
 
 
 
