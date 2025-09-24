@@ -13,8 +13,8 @@ app.get('/json', (req, res) => {
   res.json({ message });
 });
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//const PORT = 3000;
+//app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 // Exportar la app
