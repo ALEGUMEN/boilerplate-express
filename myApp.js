@@ -1,45 +1,10 @@
+// Importa Express
 const express = require('express');
 const app = express();
 
+// Ruta raíz: responde a GET / con "Hello Express"
 app.get('/', (req, res) => {
   res.send('Hello Express');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- module.exports = app;
+module.exports = app;
