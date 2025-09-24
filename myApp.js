@@ -26,5 +26,16 @@ app.get('/json', (req, res) => {
   res.json({ message });
 });
 
+// Middleware que agrega la hora al request
+const addCurrentTime = (req, res, next) => {
+  req.time = new Date().toString();
+  next(); 
+};
+
+// Ruta /now con middleware encadenado
+app.get('/now', addCurrentTime, (req, res) => {
+  res.json({ time: req.time });
+});
+
 module.exports = app;
 
