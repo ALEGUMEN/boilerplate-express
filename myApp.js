@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
 
 // Middleware de logging
 app.use((req, res, next) => {
@@ -11,6 +12,7 @@ app.use((req, res, next) => {
 
 // Middleware para archivos estáticos
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Ruta principal
 app.get('/', (req, res) => {
@@ -43,7 +45,7 @@ app.get('/:word/echo', (req, res) => {
 });
 
 // Ruta /name que recibe query parameters
-app.get('/name', (req, res) => {
+app.post('/name', (req, res) => {
   // req.query contiene los parámetros de la URL
   const firstName = req.query.first;
   const lastName = req.query.last;
@@ -51,6 +53,8 @@ app.get('/name', (req, res) => {
   // Respondemos con JSON
   res.json({ name: `${firstName} ${lastName}` });
 });
+
+
 
 module.exports = app;
 
