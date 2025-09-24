@@ -1,10 +1,12 @@
 // Importa Express
-const express = require('express');
 const app = express();
+const path = require('path'); // Para construir rutas seguras
 
-// Ruta raíz: responde a GET / con "Hello Express"
+
 app.get('/', (req, res) => {
-  res.send('Hello Express');
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
+
+
 
 module.exports = app;
