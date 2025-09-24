@@ -25,4 +25,3 @@ app.get('/json', (req, res) => {
 
 // Exportar la app
 module.exports = app;
-
